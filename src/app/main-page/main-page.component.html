@@ -1,0 +1,44 @@
+<!--
+<button mat-raised-button color="warn" routerLink="/dum">Go dum-page-component</button>
+<div style="padding: 50px;">
+    <div fxLayout="row wrap" fxLayoutGap="15px grid">
+        <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="45%" *ngFor="let b of blogList">
+            <mat-card class="blogItem mat-elevation-z4" *ngIf="b.isPublished == true">
+                <mat-card-header>
+                    <mat-card-title>{{b.title}}</mat-card-title>
+                    <mat-card-subtitle>{{b.createdBy}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{b.content}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>Read More</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+-->
+
+<div style="padding: 50px;">
+    <div fxLayout="row wrap" fxLayoutGap="15px grid">
+        <div fxFlex="20%" fxFlex.xs="45%" fxFlex.sm="30%" *ngFor="let b of dotaHeroList">
+            <mat-card class="blogItem mat-elevation-z4">
+                <mat-card-header style="margin-left: -5%;">
+                    <mat-card-title>{{b.localized_name}}</mat-card-title>
+                    <mat-card-subtitle style="margin-bottom: -5%;">
+                        <p style="font-weight: bold;">{{getAttributeName(b.primary_attr)}}</p>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>
+                        <span>{{b.attack_type}} - </span>
+                        <span *ngFor="let r of b.roles ; last as isLast">{{r}}<span *ngIf="!isLast">, </span></span>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]=getHeroImage(b.name)>
+                <mat-card-actions>
+                    <button mat-button (click)="goToWebsite(b.id)">Read More</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
