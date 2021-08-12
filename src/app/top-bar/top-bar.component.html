@@ -9,13 +9,14 @@
       </mat-slider>
     </div>
     -->
-    <div style="margin:auto; max-width: 500px; padding: 20px;">
-      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="onSearchChange()" autocomplete="off" placeholder="&#61442;  Start searching for a hero by name or id">
+    <div class="searchBoxDiv" fxFlex="30">
+        <input class="inputBox" matInput [(ngModel)]="searchText" (input)="onSearchChange()" placeholder="Search">
     </div>
-    <div>
+    <!--<mat-icon>search</mat-icon>
+      <div>
       <button mat-button *ngIf="router.url !== '/'" routerLink="/">Hero List</button>
       <button mat-button>N/A</button>
       <button mat-button>Match History</button>
-    </div>
+    </div>-->
 </mat-toolbar>
 
