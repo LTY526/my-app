@@ -1,6 +1,6 @@
 
 <mat-toolbar>
-    <span *ngIf="router.url === '/'">Heroes List</span>
+    <span *ngIf="router.url === '/'">Hero List</span>
     <span *ngIf="router.url === '/dum'">dum</span>
     <!--to be changed to other functional feature
     <div fxHide.lt-md>
@@ -9,5 +9,11 @@
       </mat-slider>
     </div>
     -->
+
+    <div>
+      <button mat-button *ngIf="router.url !== '/'" routerLink="/">Hero List</button>
+      <button mat-button>N/A</button>
+      <button mat-button>Match History</button>
+    </div>
 </mat-toolbar>
 

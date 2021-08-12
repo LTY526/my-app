@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../services/blog.service';
+import { DotaImageService } from '../services/dota-image.service';
 import { DotaService } from '../services/dota.service';
 
 @Component({
@@ -8,29 +8,17 @@ import { DotaService } from '../services/dota.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  blogList: any = [];
-  dotaHeroList: any = [];
+  searchText: any;
 
-  constructor(private blogSvc: BlogService, private dotaSvc: DotaService) { 
-    /*this.blogSvc.getAllBlog().subscribe(response => {
-      this.blogList = response;
-    })*/
-    this.dotaSvc.getAllHeroes().subscribe(response => {
-      this.dotaHeroList = response.sort(function(a, b){
-        if(a.localized_name < b.localized_name) { return -1; }
-        if(a.localized_name > b.localized_name) { return 1; }
-        return 0;
-      })
-      console.log(response);
-    })
+  constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService) { 
+    this.dotaSvc.getHerolist();
+    this.dotaSvc.getItemList();
+    this.dotaSvc.getRecentMatches(316051778).subscribe(res => {
+      console.log(res);
+    });
   }
 
   ngOnInit(): void {
-  }
-
-  getHeroImage(localized_name: string) {
-    let newname = localized_name.split("npc_dota_hero_");
-    return "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/" + newname[1] + ".png";
   }
 
   getAttributeName(primary_attr: string) {

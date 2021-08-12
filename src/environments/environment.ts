@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  key:'b5f09281726f487aba2648b4014b2964',
-  keyName: 'softwareq-apim-subscription-key',
-  url: 'https://softwareq-merdeka-api.azure-api.net/blog/v1/',
+  steamApiKey: 'A29ED4FC8FD633348FAC4777E8500097',
 };
 
 /*

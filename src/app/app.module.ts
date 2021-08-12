@@ -10,7 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { MainPageComponent } from './main-page/main-page.component';
 import { DumPageComponent } from './dum-page/dum-page.component';
@@ -18,12 +20,14 @@ import { DumPageComponent } from './dum-page/dum-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     AppComponent,
     DumPageComponent,
     MainPageComponent,
-    TopBarComponent
+    TopBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,9 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     MatToolbarModule,
     MatIconModule,
     MatSliderModule,
+    MatFormFieldModule,
+    FormsModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

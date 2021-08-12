@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BlogService } from './blog.service';
+import { DotaImageService } from './dota-image.service';
 
-describe('BlogService', () => {
-  let service: BlogService;
+describe('DotaImageService', () => {
+  let service: DotaImageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(BlogService);
+    service = TestBed.inject(DotaImageService);
   });
 
   it('should be created', () => {
