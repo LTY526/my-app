@@ -8,5 +8,5 @@ import { MainPageComponent } from './main-page/main-page.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = '123456';
+  title = 'my-app';
 }

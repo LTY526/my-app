@@ -9,7 +9,9 @@
       </mat-slider>
     </div>
     -->
-
+    <div style="margin:auto; max-width: 500px; padding: 20px;">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" (input)="onSearchChange()" autocomplete="off" placeholder="&#61442;  Start searching for a hero by name or id">
+    </div>
     <div>
       <button mat-button *ngIf="router.url !== '/'" routerLink="/">Hero List</button>
       <button mat-button>N/A</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DotaImageService } from '../services/dota-image.service';
 import { DotaService } from '../services/dota.service';
+import { HeroSearchService } from '../shared/hero-search.service';
 
 @Component({
   selector: 'app-main-page',
@@ -10,12 +11,15 @@ import { DotaService } from '../services/dota.service';
 export class MainPageComponent implements OnInit {
   searchText: any;
 
-  constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService) { 
+  constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService, public heroSearch: HeroSearchService) { 
     this.dotaSvc.getHerolist();
     this.dotaSvc.getItemList();
-    this.dotaSvc.getRecentMatches(316051778).subscribe(res => {
+    this.heroSearch.currentSearchText.subscribe(res => {
+      this.searchText = res;
+    })
+    /*this.dotaSvc.getRecentMatches(316051778).subscribe(res => {
       console.log(res);
-    });
+    });*/
   }
 
   ngOnInit(): void {
