@@ -1,7 +1,11 @@
 
 <mat-toolbar>
-    <span *ngIf="router.url === '/'">Hero List</span>
-    <span *ngIf="router.url === '/dum'">dum</span>
+    <span>
+      <button mat-icon-button (click)="sendSideNavSignal()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      {{title}}
+    </span>
     <!--to be changed to other functional feature
     <div fxHide.lt-md>
       <span class="column-label">Columns</span>
@@ -9,7 +13,7 @@
       </mat-slider>
     </div>
     -->
-    <div class="searchBoxDiv" fxFlex="30">
+    <div class="searchBoxDiv" fxFlex="30" *ngIf="router.url === '/herolist'">
         <input class="inputBox" matInput [(ngModel)]="searchText" (input)="onSearchChange()" placeholder="Search">
     </div>
     <!--<mat-icon>search</mat-icon>

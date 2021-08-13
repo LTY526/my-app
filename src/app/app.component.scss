@@ -2,3 +2,16 @@
     background-color: black;
     font-size: 20px;
 }
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav, mad-sidenav-content {
+    padding: 16px;
+}
+
+mat-sidenav {
+    background-color: aquamarine;
+    width: 300px;
+}

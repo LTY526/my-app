@@ -1,5 +1,23 @@
 <!--ideally to put top bar here so that it always stay on top when swithhing page-->
 <!--by inserting seperate component here <component></component> -->
 <!--or raw html code here (before router-outlet)-->
-<app-top-bar></app-top-bar>
-<router-outlet></router-outlet>
+
+<mat-sidenav-container>
+    <mat-sidenav mode="push" [(opened)]="opened">
+        <mat-nav-list>
+            <a mat-list-item (click)="goTo('/')"> Main Page (Hero List) </a>
+            <a mat-list-item (click)="goTo('/recent')"> Recent Matches </a>
+            <a mat-list-item (click)="goTo('/dum')"> Dum </a>
+            <a mat-list-item> Contacts </a>
+            <a mat-list-item> Create Contact </a>
+            <a mat-list-item> Activities </a>
+            <a mat-list-item> Create Activity </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+        <app-top-bar (event)="receiveSideNavSignal()"></app-top-bar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

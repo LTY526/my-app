@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RecentMatchesComponent } from './recent-matches/recent-matches.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     DumPageComponent,
     MainPageComponent,
     TopBarComponent,
+    RecentMatchesComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,11 +45,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatIconModule,
     MatSliderModule,
     MatFormFieldModule,
+    MatListModule,
     MatSidenavModule,
     FormsModule,
     Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
