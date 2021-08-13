@@ -17,9 +17,6 @@ export class MainPageComponent implements OnInit {
     this.heroSearch.currentSearchText.subscribe(res => {
       this.searchText = res;
     })
-    /*this.dotaSvc.getRecentMatches(316051778).subscribe(res => {
-      console.log(res);
-    });*/
   }
 
   ngOnInit(): void {

@@ -19,7 +19,7 @@ export class DotaService {
 
 
   public dotaHeroList: any = [];
-  public dotaItemList: any = []
+  public dotaItemList: any = [];
 
   constructor(private http: HttpClient) { }
 
