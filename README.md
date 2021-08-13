@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
+# About this app
+
+This project was created to play with official Dota 2 API and also OpenDota API. A steam API key is required to run this project (stored as `steamApiKey` in environment.ts).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
