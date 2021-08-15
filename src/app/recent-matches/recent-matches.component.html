@@ -1,1 +1,58 @@
-<p>recent-matches works!</p>
+<div class="d-flex flex-column mb-4 mt-4">
+    <div class="d-flex flex-row mx-lg-5">
+        <div class="col-9 col-md-10 input-group-sm">
+            <input type="tel" class="form-control m-auto" [(ngModel)]="uid" placeholder="Dota ID" style="width: 100%;">
+        </div>
+
+        <div class="col-1 col-md-5 ml-n2">
+            <button type="button" class="btn btn-dark custom-button" (click)="getRecent()">
+                Find
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="d-flex flex-column mb-4 p-2 p-md-5 border totalMatch">
+    <div class="d-flex flex-wrap singleMatchRow1" >
+        <div class="col-4 col-md-2 border">r1a</div>
+        <div class="col-8 col-md-4 border">r1b</div>
+        <div class="col-6 col-md-3 border">r1c</div>
+        <div class="col-6 col-md-3 border">r1d</div>
+    </div>
+
+    <div class="d-flex flex-row singleMatchRow2" >
+        <div class="col-4 col-md-2 border">r2a</div>
+        <div class="col-8 col-md-10 border d-flex flex-wrap">
+            <div class="col-12 col-md-12 border">r2b1</div>
+            <div class="col-12 col-md-12 border">r2b2</div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="p-3">
+    <div class="card mb-3 p-md-2 p-1 shadow-sm" style="max-width: 1080px; margin: 0 auto;" *ngFor="let m of recent20Matches">
+        <div class="row g-0">
+          <div class="col-md-3 my-auto" style="margin: 0 auto;">
+            <img [src]="m.hero_image" class="img-fluid rounded-start imageClass" alt="...">
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <h5 class="card-title">{{m.match_id}}</h5>
+              <p class="card-text">{{m.kills}}/{{m.deaths}}/{{m.assists}}</p>
+              <p class="card-text">GPM: {{m.gold_per_min}} XPM: {{m.xp_per_min}}</p>
+              <p class="card-text">Game Mode: {{m.game_mode_name}}</p>
+              <p class="card-text">Lobby Type: {{m.lobby_type_name}}</p>
+
+              <div class="d-flex flex-row">
+                <div class="col-2 itemBox" *ngFor="let i of m.items">
+                  <img class="shadow-sm itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
+                </div>
+              </div>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

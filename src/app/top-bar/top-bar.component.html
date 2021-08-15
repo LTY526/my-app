@@ -13,8 +13,8 @@
       </mat-slider>
     </div>
     -->
-    <div class="searchBoxDiv" fxFlex="30" *ngIf="router.url === '/herolist'">
-        <input class="inputBox" matInput [(ngModel)]="searchText" (input)="onSearchChange()" placeholder="Search">
+    <div class="searchBoxDiv" class="col-6" *ngIf="router.url === '/herolist'">
+        <input class="form-control" matInput [(ngModel)]="searchText" (input)="onSearchChange()" placeholder="Search">
     </div>
     <!--<mat-icon>search</mat-icon>
       <div>

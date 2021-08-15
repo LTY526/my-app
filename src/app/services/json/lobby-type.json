@@ -1,0 +1,53 @@
+[
+    {
+      "id": 0,
+      "name": "lobby_type_normal",
+      "localized_name": "Normal"
+
+    },
+    {
+      "id": 1,
+      "name": "lobby_type_practice",
+      "localized_name": "Practice"
+    },
+    {
+      "id": 2,
+      "name": "lobby_type_tournament",
+      "localized_name": "Tournament"
+    },
+    {
+      "id": 3,
+      "name": "lobby_type_tutorial",
+      "localized_name": "Tutorial"
+    },
+    {
+      "id": 4,
+      "name": "lobby_type_coop_bots",
+      "localized_name": "Co-op AI"
+    },
+    {
+      "id": 5,
+      "name": "lobby_type_ranked_team_mm",
+      "localized_name": "Ranked"
+    },
+    {
+      "id": 6,
+      "name": "lobby_type_ranked_solo_mm",
+      "localized_name": "Ranked"
+    },
+    {
+      "id": 7,
+      "name": "lobby_type_ranked",
+      "localized_name": "Ranked"
+    },
+    {
+      "id": 8,
+      "name": "lobby_type_1v1_mid",
+      "localized_name": "1v1"
+    },
+    {
+      "id": 9,
+      "name": "lobby_type_battle_cup",
+      "localized_name": "Battle Cup"
+    }
+]

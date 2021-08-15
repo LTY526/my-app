@@ -13,6 +13,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatBadgeModule } from '@angular/material/badge';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
@@ -24,6 +25,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RecentMatchesComponent } from './recent-matches/recent-matches.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -45,10 +47,12 @@ import { RecentMatchesComponent } from './recent-matches/recent-matches.componen
     MatIconModule,
     MatSliderModule,
     MatFormFieldModule,
+    MatBadgeModule,
     MatListModule,
     MatSidenavModule,
     FormsModule,
     Ng2SearchPipeModule,
+    NgbModule,
   ],
   providers: [Title],
   bootstrap: [AppComponent]

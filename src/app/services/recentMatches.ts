@@ -24,4 +24,37 @@ export interface recentMatches {
     cluster: number,
     leaver_status: number,
     party_size: number,
+    //extra data after API call
+    hero_image: string,
+    game_mode_name: string,
+    lobby_type_name: string,
+    items: number[];
+}
+
+export interface lobbyType {
+    id: number,
+    name: string,
+    localized_name: string,
+}
+
+export interface gameMode {
+    id: number,
+    name: string,
+    localized_name: string,
+}
+
+export interface matchDetail {
+    match_id: number,
+    players: player[];
+}
+
+export interface player {
+    account_id: number;
+    item_0: number;
+    item_1: number;
+    item_2: number;
+    item_3: number;
+    item_4: number;
+    item_5: number;
+    item_neutral: number;
 }

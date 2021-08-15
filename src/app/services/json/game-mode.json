@@ -1,0 +1,129 @@
+[
+    {
+      "id": 0,
+      "name": "game_mode_unknown",
+      "localized_name": "Unknown"
+    },
+    {
+      "id": 1,
+      "name": "game_mode_all_pick",
+      "localized_name": "All Pick"
+    },
+    {
+      "id": 2,
+      "name": "game_mode_captains_mode",
+      "localized_name": "Captains Mode"
+    },
+    {
+      "id": 3,
+      "name": "game_mode_random_draft",
+      "localized_name": "Random Draft"
+    },
+    {
+      "id": 4,
+      "name": "game_mode_single_draft",
+      "localized_name": "Single Draft"
+    },
+    {
+      "id": 5,
+      "name": "game_mode_all_random",
+      "localized_name": "All Random"
+    },
+    {
+      "id": 6,
+      "name": "game_mode_intro",
+      "localized_name": "Intro"
+    },
+    {
+      "id": 7,
+      "name": "game_mode_diretide",
+      "localized_name": "Diretide"
+    },
+    {
+      "id": 8,
+      "name": "game_mode_reverse_captains_mode",
+      "localized_name": "Reverse Captains Mode"
+    },
+    {
+      "id": 9,
+      "name": "game_mode_greeviling",
+      "localized_name": "Greeviling"
+    },
+    {
+      "id": 10,
+      "name": "game_mode_tutorial",
+      "localized_name": "Tutorial"
+    },
+    {
+      "id": 11,
+      "name": "game_mode_mid_only",
+      "localized_name": "Mid Only"
+    },
+    {
+      "id": 12,
+      "name": "game_mode_least_played",
+      "localized_name": "Least Played"
+      
+    },
+    {
+      "id": 13,
+      "name": "game_mode_limited_heroes",
+      "localized_name": "Limited Heroes"
+    },
+    {
+      "id": 14,
+      "name": "game_mode_compendium_matchmaking",
+      "localized_name": "Compendium Matchmaking"
+    },
+    {
+      "id": 15,
+      "name": "game_mode_custom",
+      "localized_name": "Custom"
+    },
+    {
+      "id": 16,
+      "name": "game_mode_captains_draft",
+      "localized_name": "Captains Draft"
+    },
+    {
+      "id": 17,
+      "name": "game_mode_balanced_draft",
+      "localized_name": "Balanced Draft"
+      
+    },
+    {
+      "id": 18,
+      "name": "game_mode_ability_draft",
+      "localized_name": "Ability Draft"
+    },
+    {
+      "id": 19,
+      "name": "game_mode_event",
+      "localized_name": "Event"
+    },
+    {
+      "id": 20,
+      "name": "game_mode_all_random_death_match",
+      "localized_name": "All Random Death Match"
+    },
+    {
+      "id": 21,
+      "name": "game_mode_1v1_mid",
+      "localized_name": "1v1 Mid"
+    },
+    {
+      "id": 22,
+      "name": "game_mode_all_draft",
+      "localized_name": "All Pick"
+    },
+    {
+      "id": 23,
+      "name": "game_mode_turbo",
+      "localized_name": "Turbo"
+    },
+    {
+      "id": 24,
+      "name": "game_mode_mutation",
+      "localized_name": "Mutation"
+    }
+]

@@ -12,8 +12,6 @@ export class MainPageComponent implements OnInit {
   searchText: any;
 
   constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService, public heroSearch: HeroSearchService) { 
-    this.dotaSvc.getHerolist();
-    this.dotaSvc.getItemList();
     this.heroSearch.currentSearchText.subscribe(res => {
       this.searchText = res;
     })

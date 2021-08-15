@@ -1,0 +1,116 @@
+/*.textbox-outer {
+    display: inline-flex;
+    width: 100%;
+    height: 100px;
+    justify-content: center; //left-right
+    align-items: center; //up-down
+    border: 1px solid black;
+}
+
+.textbox-inter {
+    background-color: lightblue;
+    width: 700px;
+    height: 50px;
+}
+
+.textbox {
+    width: 80%;
+}*/
+
+.totalmatch {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.singlematch {
+    border: 1px solid red;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.smallsingle {
+    //border: 1px solid blue;
+    //margin: none;
+    //height: 150px;
+    //justify-content: space-between;
+}
+
+h3 {
+    text-align: center;
+}
+
+.totalMatch {
+    max-width: 1000px; 
+    margin: 0 auto;
+}
+
+.custom-button {
+    font-size: 12px;
+    width: 70px;
+}
+
+.singleMatchRow1 {
+    height: 100px; 
+}
+
+.singleMatchRow2 {
+    height: 140px; 
+}
+
+.imageClass {
+    max-width: 214px; 
+    max-height: 120px;
+}
+
+.itemImage {
+    max-width: 42px;
+    max-height: 30px;
+    width: 42px;
+    height: 30px;
+    margin-left: -15px;
+}
+
+.itemBox {
+    padding-left: -15px;
+}
+
+
+//other than phone
+@media (min-width: 768px) { 
+    .custom-class {
+        width: 200px;
+    }
+    .custom-button {
+        font-size: 14px;
+        width: 150px;
+    }
+    .singleMatchRow1 {
+        height: 50px; 
+    }
+    .singleMatchRow2 {
+        height: 120px; 
+    }
+    .imageSize {
+        width: 100%;
+        height: 200px;
+    }
+    .imageClass {
+        max-width: 256px; 
+        max-height: 144px;
+    }
+    .itemImage {
+        max-width: 76px;
+        max-height: 56px;
+        width: 76px;
+        height: 56px;
+    }
+    .itemBox {
+        max-width: 110px;
+    }
+}
+
+.button-icon-text {
+    width: unset;
+}
+

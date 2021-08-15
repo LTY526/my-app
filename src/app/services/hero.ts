@@ -3,5 +3,5 @@ export interface dotaHero {
     localized_name: string,
     primary_attr: string,
     attack_type: string,
-    roles: [],
+    roles: string[],
 }
