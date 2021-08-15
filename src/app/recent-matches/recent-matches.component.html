@@ -1,4 +1,4 @@
-<div class="d-flex flex-column mb-4 mt-4">
+<div class="d-flex flex-column mb-1 mt-4">
     <div class="d-flex flex-row mx-lg-5">
         <div class="col-9 col-md-10 input-group-sm">
             <input type="tel" class="form-control m-auto" [(ngModel)]="uid" placeholder="Dota ID" style="width: 100%;">
@@ -10,26 +10,37 @@
             </button>
         </div>
     </div>
+    <div class="mb-4 ml-3 mt-2 ml-md-5 pl-md-3" *ngIf="savedUid !== undefined || savedUid !== ''">
+        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(savedUid)">Express check: {{savedUid}}</button>
+    </div>
 </div>
 
-<!--
-<div class="d-flex flex-column mb-4 p-2 p-md-5 border totalMatch">
-    <div class="d-flex flex-wrap singleMatchRow1" >
-        <div class="col-4 col-md-2 border">r1a</div>
-        <div class="col-8 col-md-4 border">r1b</div>
-        <div class="col-6 col-md-3 border">r1c</div>
-        <div class="col-6 col-md-3 border">r1d</div>
-    </div>
+<div class="p-3" *ngIf="profileName !== ''">
+    <div class="card mb-3 p-md-2 p-1 shadow-sm" style="max-width: 500px; margin: 0 auto;">
+        <div class="row g-0">
+          <div class="col-md-8 col-7">
+            <div class="card-body">
+              <div class="mb-3">
+                <h4 class="card-title">Player Detail of: {{profileName? profileName + " / ": ''}}{{profilePersonaName}}</h4>
+                <h5 class="card-text">ID: {{personUid}}</h5>
+                <h5 class="card-text">Steam URL: {{profileUrl}}</h5>
+              </div>
+                
+                
+              <div class="">
+                <button type="button" class="btn iconButton" id="dotabuff" (click)="goToPlayerWebsite(personUid, 1)"></button>
+                <button type="button" class="btn iconButton" id="opendota" (click)="goToPlayerWebsite(personUid, 2)"></button>
+                <button type="button" class="btn iconButton" id="steam" (click)="goToPlayerWebsite(personUid, 3)"></button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-3 pt-5 pt-md-4">
+            <img [src]="profilePic? profilePic: 'https://www.colorcombos.com/images/colors/FFFFFF.png'" class="shadow rounded img-fluid rounded-start imageClass" alt="...">
+          </div>
 
-    <div class="d-flex flex-row singleMatchRow2" >
-        <div class="col-4 col-md-2 border">r2a</div>
-        <div class="col-8 col-md-10 border d-flex flex-wrap">
-            <div class="col-12 col-md-12 border">r2b1</div>
-            <div class="col-12 col-md-12 border">r2b2</div>
         </div>
     </div>
 </div>
--->
 
 <div class="p-3">
     <div class="card mb-3 p-md-2 p-1 shadow-sm" style="max-width: 900px; margin: 0 auto;" *ngFor="let m of recent20Matches">
@@ -41,17 +52,6 @@
           <div class="col-md-9">
             <div class="card-body">
               <div class="card-header">
-                <!--
-                <div class="mb-1">
-                    <span class="winLose" *ngIf="m.win == true" style="color: #A9CF54;">WON MATCH</span>
-                    <span class="winLose" *ngIf="m.win == false" style="color: #C23C2A;">LOST MATCH</span>
-                </div>
-                <div>
-                    <span *ngIf="m.lobby_type_name == 'Ranked'" style="font-weight: bold;">{{m.lobby_type_name}}</span>
-                    <span *ngIf="m.lobby_type_name != 'Ranked'" style="font-weight: bold;">{{m.game_mode_name}}</span> 
-                    <span style="padding-left: 15px;">{{m.match_id}}</span>
-                </div>
-                -->
                 <div class="d-flex flex-wrap">
                     <div class="col-12 col-md-3 p-0 mb-1 mb-md-0">
                         <span class="winLose" *ngIf="m.win == true" style="color: #A9CF54;">WON MATCH</span>

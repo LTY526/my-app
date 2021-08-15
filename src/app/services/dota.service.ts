@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { dotaItem, dotaItem2 } from './item';
 import { dotaHero } from './hero';
+import { profileInfo } from './profileInfo';
 import { recentMatches, lobbyType, gameMode, matchDetail, player } from './recentMatches';
 import LobbyType from './json/lobby-type.json';
 import GameType from './json/game-mode.json'
@@ -83,6 +84,11 @@ export class DotaService {
   getRecentMatches(playerId: number) {
     let requestUrl = this.opendotaApiUrl + 'players/' + playerId + '/recentMatches';
     return this.http.get<recentMatches[]>(requestUrl);
+  }
+
+  getProfile(playerId: number) {
+    let requestUrl = this.opendotaApiUrl + 'players/' + playerId;
+    return this.http.get<profileInfo>(requestUrl);
   }
 
   getSixItems(matchID: number, uid: number) {

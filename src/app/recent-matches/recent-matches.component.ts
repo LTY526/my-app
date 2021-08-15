@@ -12,20 +12,53 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   today: any;
   uid: any;
+  savedUid: any;
   recent20Matches: any = [];
   recent20MatchesSub: Subscription = new Subscription;
+
+  playerProfileSub: Subscription = new Subscription;
+  profileName: string = "";
+  profilePersonaName: string = "";
+  profilePic: string = "";
+  profileUrl: string = "";
+  personUid: any;
+
   constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService) { }
 
   ngOnInit(): void {
-    this.today = new Date().getTime()
-    let arr = this.dotaSvc.getSixItems(6135135734, 216266355);
+    this.today = new Date().getTime();
+    this.savedUid = localStorage.getItem("savedUid");
   }
 
   ngOnDestroy(): void {
     this.recent20MatchesSub.unsubscribe();
+    this.playerProfileSub.unsubscribe();
+    this.profileName = "";
+    this.profilePersonaName = "";
+    this.profilePic = "";
+    this.profileUrl = "";
+    this.personUid = null;
+
   }
 
-  getRecent() {
+  reset() {
+    this.recent20Matches.length = 0;
+    this.profileName = ""
+  }
+
+  getRecent(savedUid?: string) {
+    this.reset();
+    if(savedUid) {
+      this.uid = savedUid;
+    }
+    this.playerProfileSub = this.dotaSvc.getProfile(this.uid).subscribe(res => {
+      this.profileName = res.profile.name;
+      this.profilePersonaName = res.profile.personaname;
+      this.profilePic = res.profile.avatarfull;
+      this.profileUrl = res.profile.profileurl;
+      this.personUid = res.profile.account_id;
+      console.log(res.profile)
+    });
     this.recent20MatchesSub = this.dotaSvc.getRecentMatches(this.uid).subscribe(res => {
       res.forEach(match => {
         this.recent20Matches.push(match);
@@ -36,6 +69,8 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
         match.hero_image = this.dotaImgSvc.getHeroPortraitById(match.hero_id);
       })
     });
+    localStorage.setItem("savedUid", this.uid);
+    this.savedUid = localStorage.getItem("savedUid");
   }
 
   convertUnixTimestamp(start_time: number) {
@@ -79,6 +114,19 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
       window.open(url, "_blank");
     } else if(selection == 2) {
       let url = "https://www.opendota.com/matches/" + matchId;
+      window.open(url, "_blank");
+    } else return;
+  }
+
+  goToPlayerWebsite(uid: number, selection: number) {
+    if(selection == 1) {
+      let url = "https://www.dotabuff.com/players/" + uid;
+      window.open(url, "_blank");
+    } else if(selection == 2) {
+      let url = "https://www.opendota.com/players/" + uid;
+      window.open(url, "_blank");
+    } else if(selection == 3) {
+      let url = this.profileUrl;
       window.open(url, "_blank");
     } else return;
   }
