@@ -32,25 +32,56 @@
 -->
 
 <div class="p-3">
-    <div class="card mb-3 p-md-2 p-1 shadow-sm" style="max-width: 1080px; margin: 0 auto;" *ngFor="let m of recent20Matches">
+    <div class="card mb-3 p-md-2 p-1 shadow-sm" style="max-width: 900px; margin: 0 auto;" *ngFor="let m of recent20Matches">
         <div class="row g-0">
-          <div class="col-md-3 my-auto" style="margin: 0 auto;">
-            <img [src]="m.hero_image" class="img-fluid rounded-start imageClass" alt="...">
+          
+          <div class="col-md-3 my-auto pt-3 pt-md-auto ml-4 ml-md-0" style="margin: 0 auto;">
+            <img [src]="m.hero_image" class="shadow rounded img-fluid rounded-start imageClass" alt="...">
           </div>
           <div class="col-md-9">
             <div class="card-body">
-              <h5 class="card-title">{{m.match_id}}</h5>
-              <p class="card-text">{{m.kills}}/{{m.deaths}}/{{m.assists}}</p>
-              <p class="card-text">GPM: {{m.gold_per_min}} XPM: {{m.xp_per_min}}</p>
-              <p class="card-text">Game Mode: {{m.game_mode_name}}</p>
-              <p class="card-text">Lobby Type: {{m.lobby_type_name}}</p>
+              <div class="card-header">
+                <!--
+                <div class="mb-1">
+                    <span class="winLose" *ngIf="m.win == true" style="color: #A9CF54;">WON MATCH</span>
+                    <span class="winLose" *ngIf="m.win == false" style="color: #C23C2A;">LOST MATCH</span>
+                </div>
+                <div>
+                    <span *ngIf="m.lobby_type_name == 'Ranked'" style="font-weight: bold;">{{m.lobby_type_name}}</span>
+                    <span *ngIf="m.lobby_type_name != 'Ranked'" style="font-weight: bold;">{{m.game_mode_name}}</span> 
+                    <span style="padding-left: 15px;">{{m.match_id}}</span>
+                </div>
+                -->
+                <div class="d-flex flex-wrap">
+                    <div class="col-12 col-md-3 p-0 mb-1 mb-md-0">
+                        <span class="winLose" *ngIf="m.win == true" style="color: #A9CF54;">WON MATCH</span>
+                        <span class="winLose" *ngIf="m.win == false" style="color: #C23C2A;">LOST MATCH</span>
+                    </div>
+                    <div class="col-md-9 p-0">
+                        <span *ngIf="m.lobby_type_name == 'Ranked'" style="font-weight: bold;">{{m.lobby_type_name}}</span>
+                        <span *ngIf="m.lobby_type_name != 'Ranked'" style="font-weight: bold;">{{m.game_mode_name}}</span> 
+                        <span style="padding-left: 15px;">{{m.match_id}}</span>
+                        <span style="padding-left: 15px;">{{calculateDuration(m.duration)}}</span>
+                    </div>
+                </div>
+                
+              </div>
 
-              <div class="d-flex flex-row">
+              <ul class="list-group list-group-flush" >
+                <li class="list-group-item">KDA: {{m.kills}}/{{m.deaths}}/{{m.assists}}</li>
+                <li class="list-group-item">GPM: {{m.gold_per_min}} XPM: {{m.xp_per_min}}</li>
+              </ul>
+
+              <div class="d-flex flex-row" style="padding-left: 10px;">
                 <div class="col-2 itemBox" *ngFor="let i of m.items">
-                  <img class="shadow-sm itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
+                  <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
                 </div>
               </div>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <p class="card-text mt-4"><small class="text-muted">Ended: {{convertUnixTimestamp(m.start_time)}}</small></p>
+              <div class="buttonGroup">
+                <button type="button" class="btn iconButton" id="dotabuff" (click)="goToDetailWebsite(m.match_id, 1)"></button>
+                <button type="button" class="btn iconButton" id="opendota" (click)="goToDetailWebsite(m.match_id, 2)"></button>
+              </div>
             </div>
           </div>
         </div>

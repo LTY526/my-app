@@ -75,6 +75,33 @@ h3 {
     padding-left: -15px;
 }
 
+.winLose {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.iconButton {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    margin-left: 8px;
+}
+
+#dotabuff {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD6nXgbGPUMJi9fZg3-xb2EKluEwzNyt-NmGDxKu0A9oL4j2oUfSQCus-7oB-_pPyt5Ao&usqp=CAU");
+}
+
+#opendota {
+    background-image: url("https://pbs.twimg.com/profile_images/962444554967203840/G6KHe1q3_400x400.jpg");
+}
+
+.buttonGroup {
+    position: absolute; 
+    right: 0; 
+    bottom: 0;
+    margin-right: 22px;
+    margin-bottom: 8px;
+}
 
 //other than phone
 @media (min-width: 768px) { 
@@ -96,8 +123,8 @@ h3 {
         height: 200px;
     }
     .imageClass {
-        max-width: 256px; 
-        max-height: 144px;
+        max-width: 214px; 
+        max-height: 120px;
     }
     .itemImage {
         max-width: 76px;

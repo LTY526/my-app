@@ -109,4 +109,19 @@ export class DotaService {
     let result = this.lobbyT.find((item: { id: number; }) => item.id == lobbyTypeID);
     return result.localized_name;
   }
+
+  getWinOrLose(player_slot: number, radiant_win: boolean) {
+    let side = null;
+    if(player_slot >= 0 && player_slot <=127) side = "radiant";
+        else if(player_slot >= 128 && player_slot <= 255) side = "dire";
+        else side = null;
+    if(side == "radiant") {
+        if(radiant_win == true) return true;
+            else if(radiant_win == false) return false;
+    } else if(side == "dire") {
+        if(radiant_win == true) return false;
+            else if(radiant_win == false) return true;
+    }
+    return false;
+  }
 }

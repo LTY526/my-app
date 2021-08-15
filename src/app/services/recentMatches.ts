@@ -29,6 +29,7 @@ export interface recentMatches {
     game_mode_name: string,
     lobby_type_name: string,
     items: number[];
+    win: boolean;
 }
 
 export interface lobbyType {
