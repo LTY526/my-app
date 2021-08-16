@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # About this app
 
 This project was created to play with official Dota 2 API and also OpenDota API. A steam API key is required to run this project (stored as `steamApiKey` in environment.ts).
+https://lty526.github.io/my-app/ (can test with DotaID: 216266355)
 
 ## Development server
 
