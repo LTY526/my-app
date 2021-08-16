@@ -12,7 +12,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   today: any;
   uid: any;
-  savedUid: any;
+  savedUid: any = null;
   recent20Matches: any = [];
   recent20MatchesSub: Subscription = new Subscription;
 
@@ -38,7 +38,6 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     this.profilePic = "";
     this.profileUrl = "";
     this.personUid = null;
-
   }
 
   reset() {

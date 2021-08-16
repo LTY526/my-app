@@ -5,13 +5,9 @@
 <mat-sidenav-container>
     <mat-sidenav mode="push" [(opened)]="opened">
         <mat-nav-list>
-            <a mat-list-item (click)="goTo('/')"> Main Page (Hero List) </a>
             <a mat-list-item (click)="goTo('/recent')"> Recent Matches </a>
-            <a mat-list-item (click)="goTo('/dum')"> Dum </a>
-            <a mat-list-item> Contacts </a>
-            <a mat-list-item> Create Contact </a>
-            <a mat-list-item> Activities </a>
-            <a mat-list-item> Create Activity </a>
+            <a mat-list-item (click)="goTo('/herolist')"> Hero List </a>
+            <a mat-list-item> New Features coming soon (not happening) </a>
         </mat-nav-list>
     </mat-sidenav>
     

@@ -18,7 +18,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
 import { MainPageComponent } from './main-page/main-page.component';
-import { DumPageComponent } from './dum-page/dum-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -30,7 +29,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    DumPageComponent,
     MainPageComponent,
     TopBarComponent,
     RecentMatchesComponent,

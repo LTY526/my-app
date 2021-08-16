@@ -10,8 +10,8 @@
             </button>
         </div>
     </div>
-    <div class="mb-4 ml-3 mt-2 ml-md-5 pl-md-3" *ngIf="savedUid !== undefined || savedUid !== ''">
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(savedUid)">Express check: {{savedUid}}</button>
+    <div class="mb-4 ml-3 mt-2 ml-md-5 pl-md-3">
+        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(savedUid)">Last checked: {{savedUid}}</button>
     </div>
 </div>
 
