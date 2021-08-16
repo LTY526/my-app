@@ -78,21 +78,26 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     let diffInHour = diff / 3600000;
     let diffInDay = diff/ 86400000
     let diffInMonth = diff / 2628000000;
+
+    let diffInMinS = diffInMin.toString();
+    let diffInHourS = diffInHour.toString();
+    let diffInDayS = diffInDay.toString()
+    let diffInMonthS = diffInMonth.toString();
     
     if(diffInMin <= 60) {
-      return diffInMin.toFixed(0) + " Minute(s) ago";
+      return diffInMinS.slice(0, (diffInMinS.indexOf("."))) + " Minute(s) ago";
 
     } else if(diffInMin > 60 && diffInHour <= 24) {
-        return diffInHour.toFixed(0) + " Hour(s) ago";
+        return diffInHourS.slice(0, (diffInHourS.indexOf("."))) + " Hour(s) ago";
 
     } else if(diffInHour > 24 && diffInDay <= 30) {
-        return diffInDay.toFixed(0) + " Day(s) ago";
+        return diffInDayS.slice(0, (diffInDayS.indexOf("."))) + " Day(s) ago";
 
     } else if(diffInDay > 30) {
-        return diffInMonth.toFixed(0) + " Month(s) ago";
+        return diffInMonthS.slice(0, (diffInMonthS.indexOf("."))) + " Month(s) ago";
 
     } else {
-        return diffInMonth.toFixed(0) + " Month(s) ago";
+        return diffInMonthS.slice(0, (diffInMonthS.indexOf("."))) + " Month(s) ago";
     }
   }
 
