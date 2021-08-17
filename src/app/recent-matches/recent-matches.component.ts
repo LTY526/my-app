@@ -22,6 +22,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   profilePic: string = "";
   profileUrl: string = "";
   personUid: any;
+  godMode: boolean = false;
 
   constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService) { }
 
@@ -45,10 +46,17 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     this.profileName = ""
   }
 
-  getRecent(savedUid?: string) {
+  enableGodMode() {
+    this.godMode = true;
+  }
+
+  getRecent(savedUid?: number) {
     this.reset();
     if(savedUid) {
       this.uid = savedUid;
+    }
+    if(this.uid == 999999999 ) {
+      this.enableGodMode();
     }
     this.playerProfileSub = this.dotaSvc.getProfile(this.uid).subscribe(res => {
       this.profileName = res.profile.name;
