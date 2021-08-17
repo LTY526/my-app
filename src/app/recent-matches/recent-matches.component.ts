@@ -46,6 +46,30 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     this.profileName = ""
   }
 
+  skillBracketStyle(skillNum: number) {
+    if(!skillNum) {
+      return 'color: grey; font-weight:500;';
+    } else if(skillNum == 1) {
+      return 'color: grey; font-weight:500;'
+    } else if(skillNum == 2) {
+      return 'color: black; font-weight:500;'
+    } else if(skillNum == 3) {
+      return 'color: #CCB612; font-weight:500;'
+    } else return;
+  }
+
+  skillBracketLabel(skillNum: number) {
+    if(!skillNum) {
+      return 'U';
+    } else if(skillNum == 1) {
+      return 'N'
+    } else if(skillNum == 2) {
+      return 'H'
+    } else if(skillNum == 3) {
+      return 'VH'
+    } else return;
+  }
+
   enableGodMode() {
     this.godMode = true;
   }
@@ -57,6 +81,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     }
     if(this.uid == 999999999 ) {
       this.enableGodMode();
+      return;
     }
     this.playerProfileSub = this.dotaSvc.getProfile(this.uid).subscribe(res => {
       this.profileName = res.profile.name;
@@ -110,14 +135,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   calculateDuration(duration: number) {
-    var h = Math.floor(duration % (3600*24) / 3600);
-    var m = Math.floor(duration % 3600 / 60);
-    var s = Math.floor(duration % 60);
-
-    var hDisplay = h > 0 ? h + ":" : "";
-    var mDisplay = m > 0 ? m + ":" : "";
-    var sDisplay = s > 0 ? s + "" : "";
-    return hDisplay + mDisplay + sDisplay;
+    return Math.floor(duration % 3600 / 60);
   }
 
   goToDetailWebsite(matchId: number, selection: number) {

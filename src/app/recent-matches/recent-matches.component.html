@@ -10,14 +10,17 @@
             </button>
         </div>
     </div>
-    <div class="mb-4 ml-3 mt-2 ml-md-5 pl-md-3">
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(savedUid)">Last checked: {{savedUid}}</button>
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(25907144)">Cr1t</button>
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(18180970)">Handsken</button>
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(56939869)">Gorgc</button>
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(250999009)">taco</button>
-        <button type="button" class="btn btn-sm btn-info" (click)="getRecent(216266355)">juju</button>
+    <div class="ml-3 mt-2 ml-md-5 pl-md-3">
+        <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(savedUid)">Last checked: {{savedUid}}</button>
     </div>
+    <div class="ml-3 mt-2 ml-md-5 pl-md-3" *ngIf="godMode">
+      <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(25907144)">Cr1t</button>
+      <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(18180970)">Handsken</button>
+      <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(56939869)">Gorgc</button>
+      <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(250999009)">taco</button>
+      <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(216266355)">juju</button>
+      <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(316051778)">culture</button>
+  </div>
 </div>
 
 <div class="p-3" *ngIf="profileName !== ''">
@@ -66,7 +69,8 @@
                         <span *ngIf="m.lobby_type_name == 'Ranked'" style="font-weight: bold;">{{m.lobby_type_name}}</span>
                         <span *ngIf="m.lobby_type_name != 'Ranked'" style="font-weight: bold;">{{m.game_mode_name}}</span> 
                         <span style="padding-left: 15px;">{{m.match_id}}</span>
-                        <span style="padding-left: 15px;">{{calculateDuration(m.duration)}}</span>
+                        <span style="padding-left: 15px;">{{calculateDuration(m.duration)}} Min</span>
+                        <span style="padding-left: 15px;" [style]="skillBracketStyle(m.skill)">{{skillBracketLabel(m.skill)}}</span>
                     </div>
                 </div>
                 
@@ -82,7 +86,7 @@
                   <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
                 </div>
               </div>
-              <p class="card-text mt-4"><small class="text-muted">Ended: {{convertUnixTimestamp(m.start_time)}}</small></p>
+              <p class="card-text mt-4 pl-2"><small class="text-muted">Ended: {{convertUnixTimestamp(m.start_time)}}</small></p>
               <div class="buttonGroup">
                 <button type="button" class="btn iconButton" id="dotabuff" (click)="goToDetailWebsite(m.match_id, 1)"></button>
                 <button type="button" class="btn iconButton" id="opendota" (click)="goToDetailWebsite(m.match_id, 2)"></button>
