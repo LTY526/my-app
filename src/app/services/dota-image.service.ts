@@ -29,7 +29,7 @@ export class DotaImageService {
 
   getItemPortraitById(item_id: number) {
     if(item_id == 0) {
-      return '../../assets/FFFFFF.png'
+      return 'assets/FFFFFF.png'
     }else {
       let res = this.dotaSvc.dotaItemList.find((item: { id: number; }) => item.id == item_id)
       let result = this.getItemPortrait(res.name);
