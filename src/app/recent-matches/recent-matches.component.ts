@@ -42,6 +42,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   reset() {
+    this.today = new Date().getTime();
     this.recent20Matches.length = 0;
     this.profileName = ""
   }
