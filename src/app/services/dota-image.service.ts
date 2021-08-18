@@ -10,8 +10,7 @@ export class DotaImageService {
 
   getHeroPortrait(name: string) {
     let newname = name.split("npc_dota_hero_");
-    let complete = this.dotaSvc.dotaImageUrl + this.dotaSvc.heroPortrait + newname[1] + this.dotaSvc.format;
-    return complete;
+    return 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/' + newname[1] + '.png';
   }
 
   getHeroPortraitById(hero_id: number) {
@@ -22,10 +21,10 @@ export class DotaImageService {
 
   getItemPortrait(name: string) {
     if(name.includes('recipe')) {
-      return null;
+      return 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/recipe.png'
     }
     let newname = name.split("item_");
-    return this.dotaSvc.dotaImageUrl + this.dotaSvc.itemPortrait + newname[1] + '_lg' + this.dotaSvc.format;
+    return 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/' + newname[1] + '.png';
   }
 
   getItemPortraitById(item_id: number) {

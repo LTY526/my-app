@@ -17,12 +17,6 @@ import { Subscription } from 'rxjs';
 
 export class DotaService {
   opendotaApiUrl: string = 'https://api.opendota.com/api/';
-  dotaApiUrl: string = 'https://api.steampowered.com/IEconDOTA2_570/';
-  language: string = 'en_US';
-  dotaImageUrl: string = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images';
-  heroPortrait: string = '/dota_react/heroes/';
-  itemPortrait: string = '/items/';
-  format: string = '.png';
 
   //light-blue: imported, white: declared name, light-green: data type
   public lobbyT: any[] = LobbyType as lobbyType[];
@@ -61,8 +55,8 @@ export class DotaService {
   getItemList() {
     if(this.dotaItemList.length <= 0) {
       console.log("ItemList API called");
-      let requestUrl = this.dotaApiUrl + 'GetGameItems/V001/' + '?key='
-       + environment.steamApiKey + '&language=' + this.language;
+      let requestUrl = 'https://api.steampowered.com/IEconDOTA2_570/GetGameItems/V001/?key='
+       + environment.steamApiKey + '&language=en_US';
       this.http.get<dotaItem>(requestUrl).subscribe(res => {
         this.dotaItemList = res.result.items.sort(function(a, b){
           if(a.id < b.id) { return -1; }
