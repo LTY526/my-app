@@ -87,6 +87,7 @@ export class DotaService {
 
   getSixItems(matchID: number, uid: number) {
     let itemArr: number[] = [];
+    let neutItem: number[] = [];
     let requestUrl = this.opendotaApiUrl + "matches/" + matchID;
     this.sub = this.http.get<matchDetail>(requestUrl).subscribe(res => {
       let plyr: player = res.players.find(player => player.account_id == uid)!;
@@ -96,8 +97,9 @@ export class DotaService {
       itemArr.push(plyr.item_3);
       itemArr.push(plyr.item_4);
       itemArr.push(plyr.item_5);
+      neutItem.push(plyr.item_neutral);
     });
-    return itemArr;
+    return [itemArr, neutItem];
   }
 
   getGameModeName(gameModeID: number) {

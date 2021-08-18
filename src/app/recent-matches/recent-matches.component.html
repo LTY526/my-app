@@ -87,6 +87,11 @@
                   <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
                 </div>
               </div>
+              <div class="d-flex flex-row pt-2" style="padding-left: 10px;">
+                <div class="col-2 itemBox" *ngFor="let i of m.neutral_item">
+                  <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
+                </div>
+              </div>
               <p class="card-text mt-4 pl-2"><small class="text-muted">Ended: {{convertUnixTimestamp(m.start_time)}}</small></p>
               <div class="buttonGroup">
                 <button type="button" class="btn iconButton" id="dotabuff" (click)="goToDetailWebsite(m.match_id, 1)"></button>

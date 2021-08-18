@@ -89,14 +89,15 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
       this.profilePic = res.profile.avatarfull;
       this.profileUrl = res.profile.profileurl;
       this.personUid = res.profile.account_id;
-      console.log(res.profile)
     });
     this.recent20MatchesSub = this.dotaSvc.getRecentMatches(this.uid).subscribe(res => {
       res.forEach(match => {
         this.recent20Matches.push(match);
         match.game_mode_name = this.dotaSvc.getGameModeName(match.game_mode);
         match.lobby_type_name = this.dotaSvc.getLobbyTypeName(match.lobby_type);
-        match.items = this.dotaSvc.getSixItems(match.match_id, this.uid);
+        let itemCombo = this.dotaSvc.getSixItems(match.match_id, this.uid);
+        match.items = itemCombo[0];
+        match.neutral_item = itemCombo[1];
         match.win = this.dotaSvc.getWinOrLose(match.player_slot, match.radiant_win);
         match.hero_image = this.dotaImgSvc.getHeroPortraitById(match.hero_id);
       })
