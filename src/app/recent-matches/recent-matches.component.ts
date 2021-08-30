@@ -108,7 +108,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   convertUnixTimestamp(start_time: number) {
-    let diff = Math.abs(this.today - new Date(start_time * 1000).getTime());
+    let diff = Math.abs(this.today - new Date(start_time * 1000).getTime() - 2400000);
     let diffInMin = diff / 60000;
     let diffInHour = diff / 3600000;
     let diffInDay = diff/ 86400000
