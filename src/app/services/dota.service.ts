@@ -97,6 +97,9 @@ export class DotaService {
       itemArr.push(plyr.item_3);
       itemArr.push(plyr.item_4);
       itemArr.push(plyr.item_5);
+      itemArr.push(plyr.backpack_0);
+      itemArr.push(plyr.backpack_1);
+      itemArr.push(plyr.backpack_2);
       neutItem.push(plyr.item_neutral);
     });
     return [itemArr, neutItem];

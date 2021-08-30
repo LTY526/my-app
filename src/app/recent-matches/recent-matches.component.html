@@ -1,15 +1,16 @@
 <div class="d-flex flex-column mb-1 mt-4">
-    <div class="d-flex flex-row mx-lg-5">
-        <div class="col-9 col-md-10 input-group-sm">
-            <input type="tel" class="form-control m-auto" [(ngModel)]="uid" placeholder="Dota ID" style="width: 100%;">
-        </div>
-
-        <div class="col-1 col-md-5 ml-n2">
-            <button type="button" class="btn btn-dark custom-button" (click)="getRecent()">
+    <form (submit)="getRecent()" >
+      <div class="d-flex flex-row mx-lg-5">
+          <div class="col-9 col-md-10 input-group-sm">
+            <input type="tel" class="form-control m-auto" [(ngModel)]="uid" name="uid" placeholder="Dota ID" style="width: 100%;">
+          </div>
+          <div class="col-1 col-md-5 ml-n2">
+            <button type="submit" class="btn btn-dark custom-button" (click)="getRecent()">
                 Find
             </button>
-        </div>
-    </div>
+          </div>
+      </div>
+    </form>
     <div class="ml-3 mt-2 ml-md-5 pl-md-3">
         <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(savedUid)">Last checked: {{savedUid}}</button>
     </div>
@@ -83,12 +84,15 @@
               </ul>
 
               <div class="d-flex flex-row" style="padding-left: 10px;">
-                <div class="col-2 itemBox" *ngFor="let i of m.items">
+                <div class="col-2 itemBox" *ngFor="let i of m.items.slice(0, 6)">
                   <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
                 </div>
               </div>
               <div class="d-flex flex-row pt-2" style="padding-left: 10px;">
-                <div class="col-2 itemBox" *ngFor="let i of m.neutral_item">
+                <div class="col-2 itemBox" *ngFor="let i of m.items.slice(6)">
+                  <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
+                </div>
+                <div class="col-2 itemBox ml-auto" *ngFor="let i of m.neutral_item">
                   <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
                 </div>
               </div>
