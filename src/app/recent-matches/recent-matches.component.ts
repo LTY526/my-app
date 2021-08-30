@@ -137,7 +137,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   calculateDuration(duration: number) {
-    return Math.floor(duration / 3600 / 60);
+    return Math.floor(duration / 60);
   }
 
   goToDetailWebsite(matchId: number, selection: number) {
