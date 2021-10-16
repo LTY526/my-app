@@ -25,27 +25,27 @@
   </div>
 </div>
 
-<div class="p-3" *ngIf="profileName !== ''">
+<div class="p-3" *ngIf="simplifiedProfile.personUid! > 1">
     <div class="card mb-3 p-md-2 p-1 shadow-sm" style="max-width: 500px; margin: 0 auto;">
         <div class="row g-0">
           <div class="col-md-8 col-7">
             <div class="card-body">
               <div class="mb-3">
-                <h4 class="card-title">Player Detail of: {{profileName? profileName + " / ": ''}}{{profilePersonaName}}</h4>
-                <h5 class="card-text">ID: {{personUid}}</h5>
-                <h5 class="card-text">Steam URL: {{profileUrl}}</h5>
+                <h4 class="card-title">Player Detail of: {{simplifiedProfile.profileName? simplifiedProfile.profileName + " / ": ''}}{{simplifiedProfile.profilePersonaName}}</h4>
+                <h5 class="card-text">ID: {{simplifiedProfile.personUid}}</h5>
+                <h5 class="card-text">Steam URL: {{simplifiedProfile.profileUrl}}</h5>
               </div>
                 
                 
               <div class="">
-                <button type="button" class="btn iconButton" id="dotabuff" (click)="goToPlayerWebsite(personUid, 1)"></button>
-                <button type="button" class="btn iconButton" id="opendota" (click)="goToPlayerWebsite(personUid, 2)"></button>
-                <button type="button" class="btn iconButton" id="steam" (click)="goToPlayerWebsite(personUid, 3)"></button>
+                <button type="button" class="btn iconButton" id="dotabuff" (click)="goToPlayerWebsite(simplifiedProfile.personUid!, 1)"></button>
+                <button type="button" class="btn iconButton" id="opendota" (click)="goToPlayerWebsite(simplifiedProfile.personUid!, 2)"></button>
+                <button type="button" class="btn iconButton" id="steam" (click)="goToPlayerWebsite(simplifiedProfile.personUid!, 3)"></button>
               </div>
             </div>
           </div>
           <div class="col-md-3 col-3 pt-5 pt-md-4">
-            <img [src]="profilePic? profilePic: 'https://www.colorcombos.com/images/colors/FFFFFF.png'" class="shadow rounded img-fluid rounded-start imageClassProfile" alt="...">
+            <img [src]="simplifiedProfile.profilePic? simplifiedProfile.profilePic: 'https://www.colorcombos.com/images/colors/FFFFFF.png'" class="shadow rounded img-fluid rounded-start imageClassProfile" alt="...">
           </div>
 
         </div>

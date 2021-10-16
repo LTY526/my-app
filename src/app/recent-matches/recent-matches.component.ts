@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DotaImageService } from '../services/dota-image.service';
 import { DotaService } from '../services/dota.service';
+import * as datefns from 'date-fns';
+import { map } from 'rxjs/operators';
+import { SimplifiedProfile } from '../models/profileInfo';
 
 @Component({
   selector: 'app-recent-matches',
@@ -10,6 +13,30 @@ import { DotaService } from '../services/dota.service';
 })
 export class RecentMatchesComponent implements OnInit, OnDestroy{
 
+  skillList = new Map([
+    [0, 'U'],
+    [1, 'N'],
+    [2, 'H'],
+    [3, 'VH']
+  ]);
+
+  skillColorList = new Map([
+    [0, 'color: grey; font-weight:500'],
+    [1, 'color: grey; font-weight:500'],
+    [2, 'color: black; font-weight:500'],
+    [3, 'color: #CCB612; font-weight:500']
+  ]);
+
+  detailWebsiteList = new Map([
+    [1, 'https://www.dotabuff.com/matches'],
+    [2, 'https://www.opendota.com/matches']
+  ]);
+
+  detailPlayerWebsiteList = new Map([
+    [1, 'https://www.dotabuff.com/players'],
+    [2, 'https://www.opendota.com/players']
+  ]);
+
   today: any;
   uid: any;
   savedUid: any = null;
@@ -17,58 +44,35 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   recent20MatchesSub: Subscription = new Subscription;
 
   playerProfileSub: Subscription = new Subscription;
-  profileName: string = "";
-  profilePersonaName: string = "";
-  profilePic: string = "";
-  profileUrl: string = "";
-  personUid: any;
+  simplifiedProfile: SimplifiedProfile = {};
   godMode: boolean = false;
 
-  constructor(public dotaSvc: DotaService, public dotaImgSvc: DotaImageService) { }
+  constructor(
+    public dotaSvc: DotaService, 
+    public dotaImgSvc: DotaImageService,
+  ) { }
 
   ngOnInit(): void {
-    this.today = new Date().getTime();
+    this.today = new Date();
     this.savedUid = localStorage.getItem("savedUid");
   }
 
   ngOnDestroy(): void {
     this.recent20MatchesSub.unsubscribe();
     this.playerProfileSub.unsubscribe();
-    this.profileName = "";
-    this.profilePersonaName = "";
-    this.profilePic = "";
-    this.profileUrl = "";
-    this.personUid = null;
   }
 
   reset() {
     this.today = new Date().getTime();
     this.recent20Matches.length = 0;
-    this.profileName = ""
   }
 
   skillBracketStyle(skillNum: number) {
-    if(!skillNum) {
-      return 'color: grey; font-weight:500;';
-    } else if(skillNum == 1) {
-      return 'color: grey; font-weight:500;'
-    } else if(skillNum == 2) {
-      return 'color: black; font-weight:500;'
-    } else if(skillNum == 3) {
-      return 'color: #CCB612; font-weight:500;'
-    } else return;
+    return this.skillColorList.get(skillNum?? 0) ?? '';
   }
 
   skillBracketLabel(skillNum: number) {
-    if(!skillNum) {
-      return 'U';
-    } else if(skillNum == 1) {
-      return 'N'
-    } else if(skillNum == 2) {
-      return 'H'
-    } else if(skillNum == 3) {
-      return 'VH'
-    } else return;
+    return this.skillList.get(skillNum?? 0) ?? 'U';
   }
 
   enableGodMode() {
@@ -84,13 +88,19 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
       this.enableGodMode();
       return;
     }
-    this.playerProfileSub = this.dotaSvc.getProfile(this.uid).subscribe(res => {
-      this.profileName = res.profile.name;
-      this.profilePersonaName = res.profile.personaname;
-      this.profilePic = res.profile.avatarfull;
-      this.profileUrl = res.profile.profileurl;
-      this.personUid = res.profile.account_id;
-    });
+    this.playerProfileSub = this.dotaSvc.getProfile(this.uid).pipe(map(x => {
+      let entry: SimplifiedProfile = {
+        profileName: x.profile.name,
+        profilePersonaName: x.profile.personaname,
+        profilePic: x.profile.avatarfull,
+        profileUrl: x.profile.profileurl,
+        personUid: x.profile.account_id,
+      };
+      return entry;
+    })).subscribe(res => {
+      this.simplifiedProfile = res;
+    })
+
     this.recent20MatchesSub = this.dotaSvc.getRecentMatches(this.uid).subscribe(res => {
       res.forEach(match => {
         this.recent20Matches.push(match);
@@ -108,32 +118,22 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   convertUnixTimestamp(start_time: number) {
-    let diff = Math.abs(this.today - new Date(start_time * 1000).getTime() - 2400000);
-    let diffInMin = diff / 60000;
-    let diffInHour = diff / 3600000;
-    let diffInDay = diff/ 86400000
-    let diffInMonth = diff / 2628000000;
-
-    let diffInMinS = diffInMin.toString();
-    let diffInHourS = diffInHour.toString();
-    let diffInDayS = diffInDay.toString()
-    let diffInMonthS = diffInMonth.toString();
+    let start_time_converted = datefns.fromUnixTime(start_time);
+    let diffInMin = datefns.differenceInMinutes(this.today, start_time_converted);
+    let diffInHour = datefns.differenceInHours(this.today, start_time_converted);
+    let diffInDay = datefns.differenceInDays(this.today, start_time_converted)
+    let diffInMonth = datefns.differenceInMonths(this.today, start_time_converted);
     
     if(diffInMin <= 60) {
-      return diffInMinS.slice(0, (diffInMinS.indexOf("."))) + " Minute(s) ago";
-
+      return `${diffInMin} Minute(s) ago`;
     } else if(diffInMin > 60 && diffInHour <= 24) {
-        return diffInHourS.slice(0, (diffInHourS.indexOf("."))) + " Hour(s) ago";
-
+      return `${diffInHour} Hours(s) ago`;
     } else if(diffInHour > 24 && diffInDay <= 30) {
-        return diffInDayS.slice(0, (diffInDayS.indexOf("."))) + " Day(s) ago";
-
+      return `${diffInDay} Day(s) ago`;
     } else if(diffInDay > 30) {
-        return diffInMonthS.slice(0, (diffInMonthS.indexOf("."))) + " Month(s) ago";
-
-    } else {
-        return diffInMonthS.slice(0, (diffInMonthS.indexOf("."))) + " Month(s) ago";
+      return `${diffInMonth} Month(s) ago`;
     }
+    return `${diffInMonth} Month(s) ago`;
   }
 
   calculateDuration(duration: number) {
@@ -141,25 +141,12 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   goToDetailWebsite(matchId: number, selection: number) {
-    if(selection == 1) {
-      let url = "https://www.dotabuff.com/matches/" + matchId;
-      window.open(url, "_blank");
-    } else if(selection == 2) {
-      let url = "https://www.opendota.com/matches/" + matchId;
-      window.open(url, "_blank");
-    } else return;
+    let url = `${this.detailWebsiteList.get(selection)}/${matchId}`;
+    window.open(url, "_blank");
   }
 
   goToPlayerWebsite(uid: number, selection: number) {
-    if(selection == 1) {
-      let url = "https://www.dotabuff.com/players/" + uid;
-      window.open(url, "_blank");
-    } else if(selection == 2) {
-      let url = "https://www.opendota.com/players/" + uid;
-      window.open(url, "_blank");
-    } else if(selection == 3) {
-      let url = this.profileUrl;
-      window.open(url, "_blank");
-    } else return;
+    let url = `${this.detailPlayerWebsiteList.get(selection)}/${uid}`;
+    window.open(url, "_blank");
   }
 }
