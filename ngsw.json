@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1634466065360,
+  "timestamp": 1634478800281,
   "index": "/my-app/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/my-app/favicon.ico",
         "/my-app/index.html",
-        "/my-app/main.2f0e044dd7a8e6fcd9b1.js",
+        "/my-app/main.723d105c386dcee00feb.js",
         "/my-app/manifest.webmanifest",
         "/my-app/polyfills.1fd0cd660952074a637b.js",
         "/my-app/runtime.b02196c5705ac0889a0f.js",
-        "/my-app/styles.6d8f448b0d77838bfd97.css"
+        "/my-app/styles.8752fcc908cf9bbf4c8f.css"
       ],
       "patterns": []
     },
@@ -910,12 +910,12 @@
     "/my-app/assets/items/yasha.png": "d2b6551dc0a54438f2fbc299b7204338e4f8acf0",
     "/my-app/assets/items/yasha_and_kaya.png": "9b417d5a64faead7a01e5c5cc0cf0cd7efcae837",
     "/my-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/my-app/index.html": "063fc6fc6d7ddc36be0aa1b1ac638d9657264b00",
-    "/my-app/main.2f0e044dd7a8e6fcd9b1.js": "cacedbaadc72024dc9f0aade3e92c2bb999f9a46",
+    "/my-app/index.html": "9599e14b9140026136ecbebbbe8c52aa8fa560b1",
+    "/my-app/main.723d105c386dcee00feb.js": "74d3c77dac524d3083f9c983b1ee8d9a5dbf30b8",
     "/my-app/manifest.webmanifest": "3f841f2ea2b5f287c45a97a65f358dbd5d3e2855",
     "/my-app/polyfills.1fd0cd660952074a637b.js": "e8446dd2200989247b24d28ebec2478d1e692591",
     "/my-app/runtime.b02196c5705ac0889a0f.js": "d400124db00df01d7aba22ef621063bc4ce0922f",
-    "/my-app/styles.6d8f448b0d77838bfd97.css": "9296424e2eea43868fe103fb2b9b089d25a2c36f"
+    "/my-app/styles.8752fcc908cf9bbf4c8f.css": "c368acc9b73a73730acf8a05c7062065d2b2048d"
   },
   "navigationUrls": [
     {
