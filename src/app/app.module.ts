@@ -21,6 +21,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { ToastrModule } from 'ngx-toastr';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RecentMatchesComponent } from './recent-matches/recent-matches.component';
@@ -53,6 +54,10 @@ import { environment } from '../environments/environment';
     FormsModule,
     Ng2SearchPipeModule,
     NgbModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

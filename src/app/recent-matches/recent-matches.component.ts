@@ -6,6 +6,7 @@ import * as datefns from 'date-fns';
 import { map } from 'rxjs/operators';
 import { SimplifiedProfile } from '../models/profileInfo';
 import { UidLocalStorage } from '../models/uidLocalStorage';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recent-matches',
@@ -35,7 +36,8 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   detailPlayerWebsiteList = new Map([
     [1, 'https://www.dotabuff.com/players'],
-    [2, 'https://www.opendota.com/players']
+    [2, 'https://www.opendota.com/players'],
+    [3, '']
   ]);
 
   today: any;
@@ -53,6 +55,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   constructor(
     public dotaSvc: DotaService, 
     public dotaImgSvc: DotaImageService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -105,18 +108,23 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
       this.simplifiedProfile = res;
     })
 
-    this.recent20MatchesSub = this.dotaSvc.getRecentMatches(this.uid).subscribe(res => {
-      res.forEach(match => {
-        this.recent20Matches.push(match);
-        match.game_mode_name = this.dotaSvc.getGameModeName(match.game_mode);
-        match.lobby_type_name = this.dotaSvc.getLobbyTypeName(match.lobby_type);
-        let itemCombo = this.dotaSvc.getSixItems(match.match_id, this.uid);
-        match.items = itemCombo[0];
-        match.neutral_item = itemCombo[1];
-        match.win = this.dotaSvc.getWinOrLose(match.player_slot, match.radiant_win);
-        match.hero_image = this.dotaImgSvc.getHeroPortraitById(match.hero_id);
-      })
-    });
+    this.recent20MatchesSub = this.dotaSvc.getRecentMatches(this.uid).subscribe(
+      res => {
+        res.forEach(match => {
+          this.recent20Matches.push(match);
+          match.game_mode_name = this.dotaSvc.getGameModeName(match.game_mode);
+          match.lobby_type_name = this.dotaSvc.getLobbyTypeName(match.lobby_type);
+          let itemCombo = this.dotaSvc.getSixItems(match.match_id, this.uid);
+          match.items = itemCombo[0];
+          match.neutral_item = itemCombo[1];
+          match.win = this.dotaSvc.getWinOrLose(match.player_slot, match.radiant_win);
+          match.hero_image = this.dotaImgSvc.getHeroPortraitById(match.hero_id);
+        })
+      },
+      error => {
+        this.toastr.error('Slow down bro, try again later.');
+      }
+    );
     this.saveUid(this.uid);
   }
 
@@ -150,7 +158,9 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   }
 
   goToPlayerWebsite(uid: number, selection: number) {
-    let url = `${this.detailPlayerWebsiteList.get(selection)}/${uid}`;
+    if(selection == 3) {
+      var url = this.simplifiedProfile.profileUrl!;
+    } else var url = `${this.detailPlayerWebsiteList.get(selection)}/${uid}`;
     window.open(url, "_blank");
   }
 

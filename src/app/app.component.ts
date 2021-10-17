@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';  
+import { ToastrService } from 'ngx-toastr';
 import { filter } from 'rxjs/operators';  
 import { DotaService } from './services/dota.service';
 
@@ -12,7 +13,13 @@ import { DotaService } from './services/dota.service';
 export class AppComponent {
   opened: boolean = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleSvc: Title, private dotaSvc: DotaService) {}
+  constructor(
+    private router: Router, 
+    private activatedRoute: ActivatedRoute, 
+    private titleSvc: Title, 
+    private dotaSvc: DotaService,
+    private toastr: ToastrService,
+  ) {}
 
   receiveSideNavSignal() {
     this.opened = !this.opened;
@@ -46,9 +53,10 @@ export class AppComponent {
 
   clearLocalStorage() {
     localStorage.clear();
+    this.toastr.success("Done noob");
   }
 
   newFeature() {
-    alert(localStorage.getItem("list"));
+    this.toastr.info(localStorage.getItem("list")!);
   }
 }
