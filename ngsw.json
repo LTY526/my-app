@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1634465842867,
+  "timestamp": 1634466065360,
   "index": "/my-app/index.html",
   "assetGroups": [
     {
@@ -160,6 +160,7 @@
         "/my-app/assets/icons/icon-512x512.png",
         "/my-app/assets/icons/icon-72x72.png",
         "/my-app/assets/icons/icon-96x96.png",
+        "/my-app/assets/icons/lol.png",
         "/my-app/assets/item.json",
         "/my-app/assets/items/abyssal_blade.png",
         "/my-app/assets/items/aegis.png",
@@ -602,6 +603,7 @@
     "/my-app/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/my-app/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/my-app/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/my-app/assets/icons/lol.png": "770ce0a807e38069610e31eb6b9e5544bec70380",
     "/my-app/assets/item.json": "2a124b9868c59256fb94b29eaf95e09361a19c03",
     "/my-app/assets/items/abyssal_blade.png": "3e2965b2adaf5bfe41860f9c53c2c6fe52ca1ced",
     "/my-app/assets/items/aegis.png": "7650ac9aaf2943d8346fae0d41e2c8f72e033ee1",
@@ -908,7 +910,7 @@
     "/my-app/assets/items/yasha.png": "d2b6551dc0a54438f2fbc299b7204338e4f8acf0",
     "/my-app/assets/items/yasha_and_kaya.png": "9b417d5a64faead7a01e5c5cc0cf0cd7efcae837",
     "/my-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/my-app/index.html": "ea029f9e37f5ff25af052d491979b22bd4b64b1a",
+    "/my-app/index.html": "063fc6fc6d7ddc36be0aa1b1ac638d9657264b00",
     "/my-app/main.2f0e044dd7a8e6fcd9b1.js": "cacedbaadc72024dc9f0aade3e92c2bb999f9a46",
     "/my-app/manifest.webmanifest": "3f841f2ea2b5f287c45a97a65f358dbd5d3e2855",
     "/my-app/polyfills.1fd0cd660952074a637b.js": "e8446dd2200989247b24d28ebec2478d1e692591",
