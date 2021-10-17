@@ -18,6 +18,7 @@ export class AppComponent {
     private activatedRoute: ActivatedRoute, 
     private titleSvc: Title, 
     private dotaSvc: DotaService,
+    private toastr: ToastrService,
   ) {}
 
   receiveSideNavSignal() {
