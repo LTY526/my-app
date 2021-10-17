@@ -25,6 +25,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RecentMatchesComponent } from './recent-matches/recent-matches.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     Ng2SearchPipeModule,
     NgbModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [Title],
   bootstrap: [AppComponent]
