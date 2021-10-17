@@ -11,8 +11,8 @@
           </div>
       </div>
     </form>
-    <div class="ml-3 mt-2 ml-md-5 pl-md-3">
-        <button type="button" class="btn btn-sm btn-info mr-1 mb-1" *ngFor="let x of uidList" (click)="getRecent(x)">{{x}}</button>
+    <div class="ml-3 mt-2 ml-md-5 pl-md-3" *ngIf="uidObject.list">
+        <button type="button" class="btn btn-sm btn-info mr-1 mb-1" *ngFor="let x of uidObject.list" (click)="getRecent(x.uid)">{{x.uid}}</button>
     </div>
     <div class="ml-3 mt-2 ml-md-5 pl-md-3" *ngIf="godMode">
       <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(25907144)">Cr1t</button>

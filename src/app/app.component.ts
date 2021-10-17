@@ -44,4 +44,8 @@ export class AppComponent {
     this.router.navigate([path]);
   }
 
+  clearLocalStorage() {
+    localStorage.clear();
+  }
+
 }

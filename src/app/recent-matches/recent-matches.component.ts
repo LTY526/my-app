@@ -5,6 +5,7 @@ import { DotaService } from '../services/dota.service';
 import * as datefns from 'date-fns';
 import { map } from 'rxjs/operators';
 import { SimplifiedProfile } from '../models/profileInfo';
+import { UidLocalStorage } from '../models/uidLocalStorage';
 
 @Component({
   selector: 'app-recent-matches',
@@ -39,7 +40,9 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   today: any;
   uid: any;
-  uidList: any = null;
+
+  uidObject: UidLocalStorage = {}
+  olduidList: any = [];
   recent20Matches: any[] = [];
   recent20MatchesSub: Subscription = new Subscription;
 
@@ -54,7 +57,8 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.today = new Date();
-    this.uidList = JSON.parse(localStorage.getItem("savedUid") || '{}');
+    this.uidObject = JSON.parse(localStorage.getItem("list") || '{}');
+    console.log(this.uidObject.list)
   }
 
   ngOnDestroy(): void {
@@ -150,14 +154,25 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     window.open(url, "_blank");
   }
 
-  saveUid(uid: any) {
-    if(this.uidList.length < 5){ // 0 1 2 3 4
-      this.uidList.unshift(uid);
+  saveUid(uid: number) {
+    if(this.uidObject.list){
+      if(this.uidObject.list!.find(x => x.uid == this.uid)) return;
+      if(this.uidObject.list!.length < 5){ // 0 1 2 3 4
+        this.uidObject.list!.unshift({
+          uid: uid
+        });
+      } else {
+        this.uidObject.list!.pop();
+        this.uidObject.list!.unshift({
+          uid: uid
+        });
+      }
     } else {
-      this.uidList.pop();
-      this.uidList.unshift(uid);
+      this.uidObject.list = [{
+        uid: uid,
+      }];
     }
-    localStorage.setItem("savedUid", JSON.stringify(this.uidList));
-    this.uidList = JSON.parse(localStorage.getItem("savedUid") || '{}');
+    localStorage.setItem("list", JSON.stringify(this.uidObject));
+    this.uidObject = JSON.parse(localStorage.getItem("list") || '{}');
   }
 }
