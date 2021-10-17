@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1634464805337,
+  "timestamp": 1634465336372,
   "index": "/my-app/index.html",
   "assetGroups": [
     {
@@ -908,7 +908,7 @@
     "/my-app/assets/items/yasha.png": "d2b6551dc0a54438f2fbc299b7204338e4f8acf0",
     "/my-app/assets/items/yasha_and_kaya.png": "9b417d5a64faead7a01e5c5cc0cf0cd7efcae837",
     "/my-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/my-app/index.html": "e31b32d8072786a594e960a1d22dc56feb6a4dc5",
+    "/my-app/index.html": "66969b2a31b027f8776de6a6aeba506a1c82eac9",
     "/my-app/main.2f0e044dd7a8e6fcd9b1.js": "cacedbaadc72024dc9f0aade3e92c2bb999f9a46",
     "/my-app/manifest.webmanifest": "3f841f2ea2b5f287c45a97a65f358dbd5d3e2855",
     "/my-app/polyfills.1fd0cd660952074a637b.js": "e8446dd2200989247b24d28ebec2478d1e692591",
