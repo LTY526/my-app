@@ -57,6 +57,7 @@ export class AppComponent {
   }
 
   newFeature() {
-    this.toastr.info(localStorage.getItem("list")!);
+    let xd = JSON.parse(localStorage.getItem("list") || '{}');
+    this.toastr.info(xd);
   }
 }
