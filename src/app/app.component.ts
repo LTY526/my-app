@@ -48,4 +48,7 @@ export class AppComponent {
     localStorage.clear();
   }
 
+  newFeature() {
+    alert(localStorage.getItem("list"));
+  }
 }
