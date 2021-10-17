@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1634479055066,
+  "timestamp": 1634479439279,
   "index": "/my-app/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/my-app/favicon.ico",
         "/my-app/index.html",
-        "/my-app/main.7d7a945257c04e4bb48f.js",
+        "/my-app/main.d8a4e1539da42eeea8b1.js",
         "/my-app/manifest.webmanifest",
         "/my-app/polyfills.1fd0cd660952074a637b.js",
         "/my-app/runtime.b02196c5705ac0889a0f.js",
@@ -910,8 +910,8 @@
     "/my-app/assets/items/yasha.png": "d2b6551dc0a54438f2fbc299b7204338e4f8acf0",
     "/my-app/assets/items/yasha_and_kaya.png": "9b417d5a64faead7a01e5c5cc0cf0cd7efcae837",
     "/my-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/my-app/index.html": "9f022b3b71107d803b2c4066738471fadb8d3092",
-    "/my-app/main.7d7a945257c04e4bb48f.js": "90794ff8de1faf2200ab11ea8b88ca0814a364ce",
+    "/my-app/index.html": "36a3c4ebe8772c1996ae9d3a0270b8e682500fbb",
+    "/my-app/main.d8a4e1539da42eeea8b1.js": "2b13e7bb9b37216462b945faff15e59f612b80f7",
     "/my-app/manifest.webmanifest": "3f841f2ea2b5f287c45a97a65f358dbd5d3e2855",
     "/my-app/polyfills.1fd0cd660952074a637b.js": "e8446dd2200989247b24d28ebec2478d1e692591",
     "/my-app/runtime.b02196c5705ac0889a0f.js": "d400124db00df01d7aba22ef621063bc4ce0922f",
