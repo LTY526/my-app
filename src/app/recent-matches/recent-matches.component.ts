@@ -39,8 +39,8 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   today: any;
   uid: any;
-  savedUid: any = null;
-  recent20Matches: any = [];
+  uidList: any = null;
+  recent20Matches: any[] = [];
   recent20MatchesSub: Subscription = new Subscription;
 
   playerProfileSub: Subscription = new Subscription;
@@ -54,7 +54,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.today = new Date();
-    this.savedUid = localStorage.getItem("savedUid");
+    this.uidList = JSON.parse(localStorage.getItem("savedUid") || '{}');
   }
 
   ngOnDestroy(): void {
@@ -113,16 +113,16 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
         match.hero_image = this.dotaImgSvc.getHeroPortraitById(match.hero_id);
       })
     });
-    localStorage.setItem("savedUid", this.uid);
-    this.savedUid = localStorage.getItem("savedUid");
+    this.saveUid(this.uid);
   }
 
-  convertUnixTimestamp(start_time: number) {
+  convertUnixTimestamp(start_time: number, duration_in_seconds: number) {
     let start_time_converted = datefns.fromUnixTime(start_time);
-    let diffInMin = datefns.differenceInMinutes(this.today, start_time_converted);
-    let diffInHour = datefns.differenceInHours(this.today, start_time_converted);
-    let diffInDay = datefns.differenceInDays(this.today, start_time_converted)
-    let diffInMonth = datefns.differenceInMonths(this.today, start_time_converted);
+    let end_time = datefns.addSeconds(start_time_converted, duration_in_seconds);
+    let diffInMin = datefns.differenceInMinutes(this.today, end_time);
+    let diffInHour = datefns.differenceInHours(this.today, end_time);
+    let diffInDay = datefns.differenceInDays(this.today, end_time)
+    let diffInMonth = datefns.differenceInMonths(this.today, end_time);
     
     if(diffInMin <= 60) {
       return `${diffInMin} Minute(s) ago`;
@@ -148,5 +148,16 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
   goToPlayerWebsite(uid: number, selection: number) {
     let url = `${this.detailPlayerWebsiteList.get(selection)}/${uid}`;
     window.open(url, "_blank");
+  }
+
+  saveUid(uid: any) {
+    if(this.uidList.length < 5){ // 0 1 2 3 4
+      this.uidList.unshift(uid);
+    } else {
+      this.uidList.pop();
+      this.uidList.unshift(uid);
+    }
+    localStorage.setItem("savedUid", JSON.stringify(this.uidList));
+    this.uidList = JSON.parse(localStorage.getItem("savedUid") || '{}');
   }
 }

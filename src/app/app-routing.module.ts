@@ -5,6 +5,7 @@ import { RecentMatchesComponent } from './recent-matches/recent-matches.componen
 
 const routes: Routes = [
   { path: '', component: RecentMatchesComponent, data: { title: 'Dota Recent Matches' } },
+  { path: 'recent', component: RecentMatchesComponent, data: { title: 'Dota Recent Matches' } },
   { path: 'herolist', component: MainPageComponent, data: { title: 'Hero List' } },
 ];
 

@@ -12,7 +12,7 @@
       </div>
     </form>
     <div class="ml-3 mt-2 ml-md-5 pl-md-3">
-        <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(savedUid)">Last checked: {{savedUid}}</button>
+        <button type="button" class="btn btn-sm btn-info mr-1 mb-1" *ngFor="let x of uidList" (click)="getRecent(x)">{{x}}</button>
     </div>
     <div class="ml-3 mt-2 ml-md-5 pl-md-3" *ngIf="godMode">
       <button type="button" class="btn btn-sm btn-info mr-1 mb-1" (click)="getRecent(25907144)">Cr1t</button>
@@ -96,7 +96,7 @@
                   <img class="shadow rounded itemImage" [src]="dotaImgSvc.getItemPortraitById(i)">
                 </div>
               </div>
-              <p class="card-text mt-4 pl-2"><small class="text-muted">Ended: {{convertUnixTimestamp(m.start_time)}}</small></p>
+              <p class="card-text mt-4 pl-2"><small class="text-muted">Ended: {{convertUnixTimestamp(m.start_time, m.duration)}}</small></p>
               <div class="buttonGroup">
                 <button type="button" class="btn iconButton" id="dotabuff" (click)="goToDetailWebsite(m.match_id, 1)"></button>
                 <button type="button" class="btn iconButton" id="opendota" (click)="goToDetailWebsite(m.match_id, 2)"></button>
