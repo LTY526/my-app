@@ -18,7 +18,6 @@ export class AppComponent {
     private activatedRoute: ActivatedRoute, 
     private titleSvc: Title, 
     private dotaSvc: DotaService,
-    private toastr: ToastrService,
   ) {}
 
   receiveSideNavSignal() {
@@ -54,10 +53,5 @@ export class AppComponent {
   clearLocalStorage() {
     localStorage.clear();
     this.toastr.success("Done noob");
-  }
-
-  newFeature() {
-    let xd = JSON.parse(localStorage.getItem("list") || '{}');
-    this.toastr.info(xd);
   }
 }
