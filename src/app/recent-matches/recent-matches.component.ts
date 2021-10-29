@@ -91,7 +91,7 @@ export class RecentMatchesComponent implements OnInit, OnDestroy{
     if(savedUid) {
       this.uid = savedUid;
     }
-    if(this.uid == 999999999 ) {
+    if(this.uid == 1 ) {
       this.enableGodMode();
       return;
     }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { ItemApiResponse, DotaItem } from '../models/item';
 import { DotaHero } from '../models/hero';
 import { ProfileInfo } from '../models/profileInfo';
@@ -9,7 +8,6 @@ import LobbyTypeJson from './json/lobby-type.json';
 import GameModeJson from './json/game-mode.json'
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { id } from 'date-fns/locale';
 
 @Injectable({
   providedIn: 'root'
