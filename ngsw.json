@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1634479439279,
+  "timestamp": 1635502582648,
   "index": "/my-app/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/my-app/favicon.ico",
         "/my-app/index.html",
-        "/my-app/main.d8a4e1539da42eeea8b1.js",
+        "/my-app/main.b6386f81b5059d7e0601.js",
         "/my-app/manifest.webmanifest",
         "/my-app/polyfills.1fd0cd660952074a637b.js",
         "/my-app/runtime.b02196c5705ac0889a0f.js",
@@ -87,6 +87,7 @@
         "/my-app/assets/heroes/luna.png",
         "/my-app/assets/heroes/lycan.png",
         "/my-app/assets/heroes/magnataur.png",
+        "/my-app/assets/heroes/marci.png",
         "/my-app/assets/heroes/mars.png",
         "/my-app/assets/heroes/medusa.png",
         "/my-app/assets/heroes/meepo.png",
@@ -473,7 +474,7 @@
   "dataGroups": [],
   "hashTable": {
     "/my-app/assets/FFFFFF.png": "9085c167581577631ea1ed5d5ae811d1e7f21383",
-    "/my-app/assets/hero.json": "92649a9518df03f6b600d0d1b7545cb5c4ade9e0",
+    "/my-app/assets/hero.json": "d9cd9fccc9af9cf210b652bb6b57e1c630f54ab9",
     "/my-app/assets/heroes/abaddon.png": "a1e6e208b570c85127976fc20617e0f8df98f431",
     "/my-app/assets/heroes/abyssal_underlord.png": "fd0e389f19425bf9a22ba8d40675babc16874df1",
     "/my-app/assets/heroes/alchemist.png": "82172f474ec62151ddd1c9b8c7f0ba69bbb80ffd",
@@ -530,6 +531,7 @@
     "/my-app/assets/heroes/luna.png": "2cb1cfa89bcd389c408e0bcf4783a3622fc15a0d",
     "/my-app/assets/heroes/lycan.png": "837696dd884443c624ce4abcd09ed7937fc77764",
     "/my-app/assets/heroes/magnataur.png": "b5e3a5b7fc16f4712cd2f15a85d291bdd7217506",
+    "/my-app/assets/heroes/marci.png": "74a10627aa7f068d11fe35a2a75df840394bd4b4",
     "/my-app/assets/heroes/mars.png": "31b0d5a854c322c8b1a274d8d08e529a44ee4553",
     "/my-app/assets/heroes/medusa.png": "9414ea2dfaadc89263e25383e606fc62de595f12",
     "/my-app/assets/heroes/meepo.png": "4d653db76f35f3a05872f6cdcc7922b102f288f7",
@@ -604,7 +606,7 @@
     "/my-app/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/my-app/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/my-app/assets/icons/lol.png": "770ce0a807e38069610e31eb6b9e5544bec70380",
-    "/my-app/assets/item.json": "2a124b9868c59256fb94b29eaf95e09361a19c03",
+    "/my-app/assets/item.json": "947a0b43f0e7e249e01797062dc561626d125ab1",
     "/my-app/assets/items/abyssal_blade.png": "3e2965b2adaf5bfe41860f9c53c2c6fe52ca1ced",
     "/my-app/assets/items/aegis.png": "7650ac9aaf2943d8346fae0d41e2c8f72e033ee1",
     "/my-app/assets/items/aeon_disk.png": "f3ade2ef19ba908dafb3808edc18f09e3ce3acee",
@@ -910,8 +912,8 @@
     "/my-app/assets/items/yasha.png": "d2b6551dc0a54438f2fbc299b7204338e4f8acf0",
     "/my-app/assets/items/yasha_and_kaya.png": "9b417d5a64faead7a01e5c5cc0cf0cd7efcae837",
     "/my-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/my-app/index.html": "36a3c4ebe8772c1996ae9d3a0270b8e682500fbb",
-    "/my-app/main.d8a4e1539da42eeea8b1.js": "2b13e7bb9b37216462b945faff15e59f612b80f7",
+    "/my-app/index.html": "e2cd87a7de762dcba016d4e838affd642d61e2a2",
+    "/my-app/main.b6386f81b5059d7e0601.js": "affb609c1231983e66673e5c3353f4dbff6c8184",
     "/my-app/manifest.webmanifest": "3f841f2ea2b5f287c45a97a65f358dbd5d3e2855",
     "/my-app/polyfills.1fd0cd660952074a637b.js": "e8446dd2200989247b24d28ebec2478d1e692591",
     "/my-app/runtime.b02196c5705ac0889a0f.js": "d400124db00df01d7aba22ef621063bc4ce0922f",
