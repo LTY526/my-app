@@ -28,6 +28,8 @@ import { RecentMatchesComponent } from './recent-matches/recent-matches.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
+import { routes } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { environment } from '../environments/environment';
     FormsModule,
     Ng2SearchPipeModule,
     NgbModule,
+    RouterModule.forRoot(routes, { useHash: true }),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true

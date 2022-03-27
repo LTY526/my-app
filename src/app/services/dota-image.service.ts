@@ -1,36 +1,31 @@
 import { Injectable } from '@angular/core';
-import { DotaService } from './dota.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DotaImageService {
 
-  constructor(private dotaSvc: DotaService) { }
+  backendURL = environment.backendURL;
+
+  constructor() { }
 
   getHeroPortrait(name: string) {
-    let processedName = name.split("npc_dota_hero_");
-    return `assets/heroes/${processedName[1]}.png`;
+    return `${this.backendURL}/heroes/byname/${name}`;
   }
 
   getHeroPortraitById(hero_id: number) {
-    let res = this.dotaSvc.dotaHeroList.find((item: { id: number; }) => item.id == hero_id)!.name;
-    return this.getHeroPortrait(res);
+    return `${this.backendURL}/heroes/byid/${hero_id}`;
   }
 
   getItemPortrait(name: string) {
-    if(name.includes('recipe')) {
-      return 'assets/items/recipe.png'
-    }
-    let processedName = name.split("item_");
-    return `assets/items/${processedName[1]}.png`;
+    return `${this.backendURL}/items/byname/${name}`;
   }
 
   getItemPortraitById(item_id: number) {
     if(item_id == 0) {
       return 'assets/FFFFFF.png'
     }
-    let res = this.dotaSvc.dotaItemList.find((item: { id: number; }) => item.id == item_id)!.name;
-    return this.getItemPortrait(res);
+    return `${this.backendURL}/items/byid/${item_id}`;
   }
 }

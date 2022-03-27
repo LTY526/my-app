@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ItemApiResponse, DotaItem } from '../models/item';
+import { DotaItem } from '../models/item';
 import { DotaHero } from '../models/hero';
 import { ProfileInfo } from '../models/profileInfo';
 import { RecentMatches, LobbyType, GameMode, MatchDetail, Player } from '../models/recentMatches';
@@ -8,6 +8,7 @@ import LobbyTypeJson from './json/lobby-type.json';
 import GameModeJson from './json/game-mode.json'
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ import { map } from 'rxjs/operators';
 
 export class DotaService {
   opendotaApiUrl = 'https://api.opendota.com/api';
+  backendURL = environment.backendURL;
 
   //light-blue: imported, white: declared name, light-green: data type
   public lobbyT: any[] = LobbyTypeJson as LobbyType[];
@@ -30,31 +32,15 @@ export class DotaService {
   constructor(private http: HttpClient) { }
 
   getHerolist() {
-    // try to not call actual api
-    // let requestUrl = `${this.opendotaApiUrl}/heroes`;
-    // this.http.get<DotaHero[]>(requestUrl);
-
-    this.http.get<DotaHero[]>('./assets/hero.json').pipe(map(list => {
-      this.dotaHeroList = list.sort(function(a, b){
-        if(a.localized_name < b.localized_name) { return -1; }
-        if(a.localized_name > b.localized_name) { return 1; }
-        return 0;
-      });
-    })).subscribe();
+    this.http.get<DotaHero[]>(`${this.backendURL}/heroes`).subscribe(res => {
+      this.dotaHeroList = res;
+    });
   }
 
   getItemList() {
-    // try to not call actual api
-    // let requestUrl = `https://api.steampowered.com/IEconDOTA2_570/GetGameItems/V001/?key=${environment.steamApiKey}&language=en_US`
-    // this.http.get<ApiResponse>(requestUrl)
-
-    this.http.get<ItemApiResponse>('./assets/item.json').pipe(map(x => {
-      this.dotaItemList = x.result.items.sort(function(a, b){
-        if(a.id < b.id) { return -1; }
-        if(a.id > b.id) { return 1; }
-        return 0;
-      });
-    })).subscribe()
+    this.http.get<DotaItem[]>(`${this.backendURL}/items`).subscribe(res => {
+      this.dotaItemList = res;
+    })
   }
 
   getRecentMatches(playerId: number) {
@@ -92,17 +78,4 @@ export class DotaService {
     };
     return false;
   }
-
-  // trydownload() {
-  //   this.http.get<DotaHero[]>('./assets/hero.json').pipe(map(x => {
-  //     let list: string[] = [];
-  //     x.forEach(hero => {
-  //       let newname = hero.name.split("npc_dota_hero_");
-  //       list.push(`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${newname[1]}.png`);
-  //     });
-  //     return list;
-  //   })).subscribe(list => {
-  //     console.log(JSON.stringify(list));
-  //   })
-  // }
 }

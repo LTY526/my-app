@@ -1,10 +1,3 @@
-export interface ItemApiResponse {
-    result: {
-      items: DotaItem[];
-      status: number;
-    }
-}
-
 export interface DotaItem {
     cost: number;
     id: number;
